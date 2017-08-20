@@ -259,7 +259,7 @@ export default class MultiCanvas extends Drawer {
             const gap = Math.max(this.params.pixelRatio, ~~(bar / 2));
             const step = bar + gap;
 
-            let absmax = 1;
+            let absmax = 1 / this.params.barHeight;
             if (this.params.normalize) {
                 const max = util.max(peaks);
                 const min = util.min(peaks);
@@ -275,7 +275,7 @@ export default class MultiCanvas extends Drawer {
                 this.fillRect(i + this.halfPixel, halfH - h + offsetY, bar + this.halfPixel, h * 2);
             }
 
-        });
+        })(peaks, channelIndex, start, end);
     }
 
     /**
@@ -321,7 +321,7 @@ export default class MultiCanvas extends Drawer {
             const offsetY = height * channelIndex || 0;
             const halfH = height / 2;
 
-            let absmax = 1;
+            let absmax = 1 / this.params.barHeight;
             if (this.params.normalize) {
                 const max = util.max(peaks);
                 const min = util.min(peaks);
@@ -332,7 +332,7 @@ export default class MultiCanvas extends Drawer {
 
             // Always draw a median line
             this.fillRect(0, halfH + offsetY - this.halfPixel, this.width, this.halfPixel);
-        });
+        })(peaks, channelIndex, start, end);
     }
 
     /**

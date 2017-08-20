@@ -191,6 +191,15 @@ export default class MediaElement extends WebAudio {
     }
 
     /**
+     * Get the audio source playback rate.
+     *
+     * @return {number}
+     */
+    getPlaybackRate() {
+        return this.playbackRate || this.media.playbackRate;
+    }
+
+    /**
      * Set the audio source playback rate.
      *
      * @param {number} value

@@ -126,8 +126,11 @@ export default class TimelinePlugin {
 
         this.canvases = [];
 
+        this._onZoom = () => this.render();
         this._onScroll = () => {
-            this.wrapper.scrollLeft = this.drawer.wrapper.scrollLeft;
+            if (this.wrapper && this.drawer.wrapper) {
+                this.wrapper.scrollLeft = this.drawer.wrapper.scrollLeft;
+            }
         };
         this._onRedraw = () => this.render();
         this._onReady = () => {
@@ -140,6 +143,7 @@ export default class TimelinePlugin {
             this.render();
             ws.drawer.wrapper.addEventListener('scroll', this._onScroll);
             ws.on('redraw', this._onRedraw);
+            ws.on('zoom', this._onZoom);
         };
     }
 
@@ -154,6 +158,7 @@ export default class TimelinePlugin {
     destroy() {
         this.unAll();
         this.wavesurfer.un('redraw', this._onRedraw);
+        this.wavesurfer.un('zoom', this._onZoom);
         this.wavesurfer.un('ready', this._onReady);
         this.wavesurfer.drawer.wrapper.removeEventListener('scroll', this._onScroll);
         if (this.wrapper && this.wrapper.parentNode) {

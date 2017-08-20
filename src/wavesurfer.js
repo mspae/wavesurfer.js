@@ -27,6 +27,7 @@ import PeakCache from './peakcache';
  * @property {string} backend='WebAudio' `'WebAudio'|'MediaElement'` In most cases
  * you don't have to set this manually. MediaElement is a fallback for
  * unsupported browsers.
+ * @property {number} barHeight=1 The height of the wave
  * @property {boolean} closeAudioContext=false Close and nullify all audio
  * contexts when the destroy method is called.
  * @property {!string|HTMLElement} container CSS selector or HTML element where
@@ -172,6 +173,7 @@ export default class WaveSurfer extends util.Observer {
         audioRate     : 1,
         autoCenter    : true,
         backend       : 'WebAudio',
+        barHeight     : 1,
         container     : null,
         cursorColor   : '#333',
         cursorWidth   : 1,
@@ -348,7 +350,6 @@ export default class WaveSurfer extends util.Observer {
         this._onResize = util.debounce(() => {
             if (prevWidth != this.drawer.wrapper.clientWidth) {
                 prevWidth = this.drawer.wrapper.clientWidth;
-                this.empty();
                 this.drawBuffer();
             }
         }, typeof this.params.responsive === 'number' ? this.params.responsive : 100);
@@ -836,6 +837,17 @@ export default class WaveSurfer extends util.Observer {
      */
     getMute() {
         return this.isMuted;
+    }
+
+    /**
+     * Get the list of current set filters as an array.
+     *
+     * Filters must be set with setFilters method first
+     *
+     * @return {array}
+     */
+    getFilters() {
+        return this.backend.filters || [];
     }
 
     /**
