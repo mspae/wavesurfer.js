@@ -1,0 +1,79 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-8">
+      <h2 class="mt-0 mb-5">
+        wavesurfer.js is a customizable audio waveform visualization for the web, built on top of <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API">Web Audio API</a> and <a href="https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API">HTML5 Canvas</a>.
+      </h2>
+    </div>
+  </div>
+</div>
+
+<div class="ws-hero">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/wavesurfer.js/1.4.0/wavesurfer.min.js"></script>
+
+  <!-- Define an HTML element where the waveform should appear -->
+  <div id="waveform">
+    <div class="progress">
+      <div class="progress-bar" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+
+      var progressBarEl = document.querySelector('.progress-bar');
+      var progressEl = document.querySelector('.progress');
+      var progress = function (val) {
+        progressBarEl.style.width = val + '%';
+        progressBarEl.setAttribute('aria-valuenow', val);
+      };
+      window.wavesurfer = WaveSurfer.create({
+        // Use the id or class-name of the element you created, as a selector
+        container: '#waveform',
+        // The color can be either a simple CSS color or a Canvas gradient
+        waveColor: '#ffffff',
+        progressColor: '#ffffff',
+        cursorColor: '#ffffff',
+        cursorWidth: 5,
+        responsive: true,
+        normalize: true
+      });
+
+      wavesurfer.on('loading', progress);
+      wavesurfer.on('ready', function (percents) {
+        progressEl.style.display = 'none';
+      });
+
+      var playPauseIcon = document.querySelector('.play-pause-icon');
+      wavesurfer.on('pause', function () {
+        playPauseIcon.innerHTML = '<i class="oi oi-media-play"></i>';
+      });
+      wavesurfer.on('play', function () {
+        playPauseIcon.innerHTML = '<i class="oi oi-media-pause"></i>';
+      });
+
+      wavesurfer.load('/example/media/small-demo.wav');
+    });
+  </script>
+
+  <div class="container">
+    <div class="controls">
+      <button class="btn btn-primary" onclick="wavesurfer.skipBackward()">
+        <i class="oi oi-media-skip-backward"></i>
+        <span class="sr-only">Backward</span>
+      </button>
+      <button class="btn btn-primary" onclick="wavesurfer.playPause()">
+        <span class="play-pause-icon"><i class="oi oi-media-play"></i></span>
+        <span class="sr-only">Play/Pause</span>
+      </button>
+      <button class="btn btn-primary" onclick="wavesurfer.skipForward()">
+       <i class="oi oi-media-skip-forward"></i>
+        <span class="sr-only">Forwards</span>
+      </button>
+      <button class="btn btn-primary" onclick="wavesurfer.toggleMute()">
+        <i class="oi oi-volume-off"></i>
+        <span class="sr-only">Mute</span>
+      </button>
+    </div>
+  </div>
+</div>

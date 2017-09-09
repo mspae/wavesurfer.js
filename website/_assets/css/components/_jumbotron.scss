@@ -1,0 +1,26 @@
+.jumbotron {
+  background: url("../img/bg.jpg") no-repeat center;
+  background-size: cover;
+  color: $white;
+  border-radius: 0;
+  h2 {
+    color: $white;
+    font-weight: 300;
+  }
+  a {
+    color: $white;
+    border-bottom: 1px solid $white;
+    &:hover,
+    &:active {
+      text-decoration: none;
+      border-bottom: none;
+    }
+  }
+  #carbonads {
+    margin-top: 2.5rem;
+  }
+  #carbonads a {
+    color: $white;
+    border-bottom: 0;
+  }
+}

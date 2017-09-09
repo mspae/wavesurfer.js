@@ -11,3 +11,9 @@ dist/**/*.map
 .DS_Store
 .idea
 .project
+
+website/dist
+website/_site
+website/.sass-cache
+website/.jekyll-metadata
+website/node_modules

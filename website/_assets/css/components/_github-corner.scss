@@ -1,0 +1,55 @@
+.github-corner {
+  fill: $white;
+  position: fixed;
+  z-index: 9999999;
+  top: 0;
+  border: 0;
+  right: 0;
+  height: 3.5rem;
+  line-height: 3.5rem;
+  display: none;
+  color: $gray-700;
+  fill: $gray-700;
+  transition: color 200ms ease-in-out, fill 200ms ease-in-out;
+  @media all and (min-width: map-get($grid-breakpoints, lg)) {
+    display: block;
+  }
+  &:hover {
+    text-decoration: none;
+    color: $white;
+    fill: $white;
+  }
+  > svg,
+  > span {
+    height: 3.5rem;
+    display: inline-block;
+    vertical-align: top;
+  }
+}
+.github-corner:hover .octo-arm {
+  animation: octocat-wave 560ms ease-in-out;
+  transform-origin: center right;
+}
+
+@keyframes octocat-wave {
+  0%,
+  100% {
+    transform: rotate(0);
+  }
+  20%,
+  60% {
+    transform: rotate(-15deg);
+  }
+  40%,
+  80% {
+    transform: rotate(15deg);
+  }
+}
+@media (max-width: 500px) {
+  .github-corner:hover .octo-arm {
+    animation: none;
+  }
+  .github-corner .octo-arm {
+    animation: octocat-wave 560ms ease-in-out;
+  }
+}

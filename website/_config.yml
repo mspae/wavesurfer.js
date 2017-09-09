@@ -1,0 +1,75 @@
+# Welcome to Jekyll!
+#
+# This config file is meant for settings that affect your whole blog, values
+# which you are expected to set up once and rarely need to edit after that.
+# For technical reasons, this file is *NOT* reloaded automatically when you use
+# 'jekyll serve'. If you change this file, please restart the server process.
+
+# Site settings
+title: wavesurfer.js
+email: katspaugh@gmail.com
+description: > # this means to ignore newlines until "baseurl:"
+  wavesurfer.js is an HTML 5 audio player and waveform visualizer, made with JavaScript and Web Audio.
+baseurl: ""
+url: "http://wavesurfer-js.org" # the base hostname & protocol for your site
+twitter_username: jekyllrb
+github_username:  jekyll
+
+# Build settings
+markdown: kramdown
+
+navigation:
+  - title: Overview
+    url: /
+  - title: FAQ
+    url: /faq/
+  - title: version 2
+    url: /v2/
+  - title: version 1
+    url: /v1
+    subnav:
+    - title: Examples
+      url: /v1/examples/
+    - title: Plugins
+      url: /v1/plugins/
+      subnav:
+        - title: Regions
+          url: /v1/plugins/regions.html
+        - title: Timeline
+          url: /v1/plugins/timeline.html
+        - title: Microphone
+          url: /v1/plugins/microphone.html
+        - title: Minimap
+          url: /v1/plugins/minimap.html
+        - title: Playlist
+          url: /v1/plugins/playlist.html
+    - title: Docs
+      url: /v1/docs/
+      subnav:
+        - title: Options
+          url: /v1/docs/options.html
+        - title: Methods
+          url: /v1/docs/methods.html
+        - title: Events
+          url: /v1/docs/events.html
+  - title: Projects
+    url: /projects/
+  - title: Blog
+    url: /blog/
+    subnav:
+      - title: 19 Feb 2016
+        url: /blog/kindle-flashcards.html
+      - title: 17 Feb 2016
+        url: /blog/netflix-subs.html
+      - title: 09 May 2015
+        url: /blog/emacs-beginning-of-function.html
+      - title: 01 May 2015
+        url: /blog/js-in-webstorm-vs-emacs.html
+      - title: 07 Mar 2015
+        url: /blog/javascript-static-analysers.html
+      - title: 14 Apr 2014
+        url: /blog/restoring-nodejs-project-after-git-reset.html
+      - title: 06 Mar 2014
+        url: /blog/ido-at-point.html
+      - title: 12 Jun 2013
+        url: /blog/emacs-javascript.html

@@ -1,0 +1,72 @@
+---
+layout: default
+---
+
+<section class="row">
+  <div class="col-md-12">
+    <div class="lead">
+      <p>
+        With wavesurfer.js you can build anything: from a powerful DJ application to a simple audio player for your blog.
+      </p>
+      <p>
+        Wavesurfer.js includes support for plugins. You can use <a href="/plugins/">community-developed plugins</a> to extend thwavesurfer.js core functionality or <a href="/plugin-dev/">you can write your own</a>.
+      </p>
+    </div>
+    <h2>Browser support</h2>
+    <p>
+        Supports all modern <a href="http://caniuse.com/#search=web%20audio">browsers supporting Web Audio</a>, including Firefox, Chrome, Safari (desktop and mobile) and Opera.
+      </p>
+    <p>
+      <img src="https://cdnjs.cloudflare.com/ajax/libs/browser-logos/42.7.1/firefox/firefox_128x128.png" class="img-fluid browser-logo" />
+      <img src="https://cdnjs.cloudflare.com/ajax/libs/browser-logos/42.7.1/chrome/chrome_128x128.png" class="img-fluid browser-logo" />
+      <img src="https://cdnjs.cloudflare.com/ajax/libs/browser-logos/42.7.1/safari/safari_128x128.png" class="img-fluid browser-logo" />
+      <img src="https://cdnjs.cloudflare.com/ajax/libs/browser-logos/42.7.1/opera/opera_128x128.png" class="img-fluid browser-logo" />
+      <img src="https://cdnjs.cloudflare.com/ajax/libs/browser-logos/42.7.1/archive/internet-explorer-tile_10-11/internet-explorer-tile_10-11_128x128.png" class="img-fluid browser-logo" />
+      <img src="https://cdnjs.cloudflare.com/ajax/libs/browser-logos/42.7.1/edge/edge_128x128.png" class="img-fluid browser-logo" />
+    </p>
+    <h2>Quick start</h2>
+    <h3>1. Include script:</h3>
+    <p>
+      Include the minified script:
+      <pre style="white-space: normal"><code id="wsVersion"></code></pre>
+    </p>
+    (Note: you can also <a href="/docs/#using-with-a-module-bundler">use a module bundler</a>)
+    <h3>2. Create an HTML container</h3>
+    <p>
+      Create a container where the waveform is to appear (in HTML):
+      <pre><code>&lt;div id="waveform"&gt;&lt;/div&gt;</code></pre>
+    </p>
+    <h3>3. Create the player</h3>
+    <p>
+     Create a wavesurfer.js instance (in JS), with the container selector along with any options you want to define (<a href="/docs/typedef/index.html#static-typedef-WavesurferParams">full list of options</a>):
+ <pre><code>var wavesurfer = WaveSurfer.create({
+    container: '#waveform',
+    waveColor: 'violet',
+    // ... other options go here
+});</code></pre>
+    </p>
+    <h3>4. Load the audio file</h3>
+    <p>
+      Tell wavesurfer.js which audio file to load (in JS):
+      <pre><code>wavesurfer.load('audio.wav');</code></pre>
+    </p>
+    <p>(More info: <a href="/docs/class/src/wavesurfer.js~WaveSurfer.html#instance-method-load">documentation of the load method</a>)</p>
+  </div>
+</section>
+
+
+<script>
+ var xhr = new XMLHttpRequest();
+  xhr.onreadystatechange = function () {
+    if (xhr.readyState === 4) {
+      var wsVersion = JSON.parse(xhr.responseText);
+      document.getElementById('wsVersion').innerHTML = '&lt;script src="//cdnjs.cloudflare.com/ajax/libs/wavesurfer.js/'+wsVersion.value.replace('v','')+'/wavesurfer.min.js"&gt;&lt;/script&gt;'; 
+    }
+  };
+  xhr.open('GET', 'https://img.shields.io/cdnjs/v/wavesurfer.js.json?maxAge=2592000');
+
+  function sendAJAX() {
+    xhr.send( );
+  }
+  sendAJAX();
+</script>

@@ -1,0 +1,38 @@
+{% assign current = page.url | downcase | split: '/' %}
+{% for item in site.navigation %}
+  {% assign this_item = item.url | split: '/'%}
+  {% if this_item[1] == current[1] and item.subnav %}
+    <ul class="nav nav-pills flex-column mb-4">
+      {% for subitem in item.subnav %}
+        {% assign this_sub_item = subitem.url | split: '/'%}
+        {% assign class = nil %}
+        {% if this_sub_item[2]  == current[2] %}
+          {% assign class = 'active' %}
+        {% endif %}
+        <li class="nav-item">
+          <a href="{{ subitem.url }}" class="nav-link {{ class }}">
+            {{ subitem.title }}
+          </a>
+          {% if subitem.subnav %}
+            <ul class="nav flex-column">
+              {% for subsubitem in subitem.subnav %}
+                {% assign this_sub_sub_item = subsubitem.url | split: '/'%}
+                {% assign sub_class = nil %}
+                {% if this_sub_sub_item[3]  == current[3] %}
+                  {% assign sub_class = 'active' %}
+                {% endif %}
+                <li class="nav-item">
+                  <a href="{{ subsubitem.url }}" class="nav-link {{ sub_class }}">
+                    {{ subsubitem.title }}
+                  </a>
+                </li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+        </li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+{% endfor %}
+
+<script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?zoneid=1673&serve=C6AILKT&placement=wavesurfer-jsorg" id="_carbonads_js"></script>    

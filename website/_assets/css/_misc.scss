@@ -1,0 +1,39 @@
+body {
+  padding-top: 3.5rem;
+}
+.navbar,
+.nav-link {
+  padding: .54rem 1rem .46rem 1rem;
+}
+.navbar-brand {
+  padding-top:.2rem;
+}
+.content-container {
+  padding-top: 2.5rem;
+}
+
+.browser-logo {
+  max-width: 4rem;
+  margin-right: 1rem;
+}
+
+.controls {
+  margin-top: 1em;
+}
+.controls .btn {
+  width: 3em;
+}
+
+.hljs {
+  background: $gray-200;
+}
+
+.nav .nav {
+  .nav-link {
+    padding-left: 2rem;
+    margin-left: 2rem;
+    &.active {
+      background: $gray-500;
+    }
+  }
+}
